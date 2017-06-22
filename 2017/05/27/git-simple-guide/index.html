@@ -59,6 +59,13 @@
         <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <script type="text/javascript">
+      var targetProtocol = "https:";
+      if (window.location.protocol != targetProtocol) {
+        window.location.href = targetProtocol + window.location.href.substring(window.location.protocol.length);
+      }
+    </script>
+
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/css/style.css">
 
