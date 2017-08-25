@@ -149,144 +149,73 @@
                     <h1 id="Docker-命令详解"><a href="#Docker-命令详解" class="headerlink" title="Docker 命令详解"></a>Docker 命令详解</h1><ol>
 <li>docker version 显示docker版本信息。</li>
 <li>docker info 显示 Docker 系统信息，包括镜像和容器数。</li>
-<li>docker search 从 Docker Hub 中搜索符合条件的镜像。</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">docker search [options &quot;o&quot;&gt;] term</div><div class="line">docker search -s  django</div></pre></td></tr></table></figure>
-<blockquote>
-<p>–automated 只列出 automated build<br>类型的镜像；</p>
-<p>–no-trunc 可显示完整的镜像描述；</p>
-<p>-s 40 列出收藏数不小于40的镜像。</p>
-</blockquote>
-<ol>
-<li>docker pull</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ocker pull [-a &quot;o&quot;&gt;] [user/ &quot;o&quot;&gt;]name[:tag &quot;o&quot;&gt;]</div><div class="line">docker pull laozhu/telescope:latest</div></pre></td></tr></table></figure>
-<blockquote>
-<p>从 Docker Hub 中拉取或者更新指定镜像。<br>-a 拉取所有 tagged 镜像 。</p>
-</blockquote>
-<ol>
-<li>docker login 按步骤输入在 Docker Hub 注册的用户名、密码和邮箱即可完成登录。</li>
+<li><p>docker search 从 Docker Hub 中搜索符合条件的镜像。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">docker search [options "o"&gt;] term</div><div class="line">docker search -s  django</div><div class="line">--automated 只列出 automated build 类型的镜像；</div><div class="line">--no-trunc 可显示完整的镜像描述；</div><div class="line">-s 40 列出收藏数不小于40的镜像。</div></pre></td></tr></table></figure>
+</li>
+<li><p>docker pull 从 Docker Hub 中拉取或者更新指定镜像。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ocker pull [-a &quot;o&quot;&gt;] [user/ &quot;o&quot;&gt;]name[:tag &quot;o&quot;&gt;]</div><div class="line">docker pull laozhu/telescope:latest</div><div class="line">-a 拉取所有 tagged 镜像 。</div></pre></td></tr></table></figure>
+</li>
+<li><p>docker login 按步骤输入在 Docker Hub 注册的用户名、密码和邮箱即可完成登录。</p>
+</li>
 <li>docker logout  运行后从指定服务器登出，默认为官方服务器</li>
-<li>docker images</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker images [options &quot;o&quot;&gt;] [name]</div></pre></td></tr></table></figure>
+<li><p>docker images 列出本地所有镜像。其中 [name] 对镜像名称进行关键词查询。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">docker images [options &quot;o&quot;&gt;] [name]</div><div class="line">-a 列出所有镜像（含过程镜像）；</div><div class="line">-f 过滤镜像，如： -f [&apos;dangling=true&apos;] 只列出满足dangling=true 条件的镜像；</div><div class="line">--no-trunc 可显示完整的镜像ID；</div><div class="line">-q 仅列出镜像ID。</div><div class="line">--tree 以树状结构列出镜像的所有提交历史。</div></pre></td></tr></table></figure>
+</li>
+<li><p>docker ps 列出所有运行中容器</p>
 <blockquote>
-<p>列出本地所有镜像。其中 [name] 对镜像名称进行关键词查询。<br>-a 列出所有镜像（含过程镜像）；</p>
-<p>-f 过滤镜像，如： -f [‘dangling=true’] 只列出满足<br>dangling=true 条件的镜像；</p>
-<p>–no-trunc 可显示完整的镜像ID；</p>
-<p>-q 仅列出镜像ID。</p>
-<p>–tree 以树状结构列出镜像的所有提交历史。</p>
+<p>-a 列出所有容器（含沉睡镜像）；<br>–before=”nginx” 列出在某一容器之前创建的容器，接受容器名称和ID作为参数；<br>–since=”nginx” 列出在某一容器之后创建的容器，接受容器名称和ID作为参数；<br>-f [exited=<int>] 列出满足exited=<int> 条件的容器；<br>-l 仅列出最新创建的一个容器；<br>–no-trunc 显示完整的容器ID；<br>-n=4 列出最近创建的4个容器；<br>-q 仅列出容器ID；<br>-s 显示容器大小。</int></int></p>
 </blockquote>
-<ol>
-<li>docker ps 列出所有运行中容器</li>
-</ol>
-<blockquote>
-<p>-a 列出所有容器（含沉睡镜像）；</p>
-<p>–before=”nginx” 列出在某一容器之前创建的容器，接受容器名称和ID作为参数；</p>
-<p>–since=”nginx” 列出在某一容器之后创建的容器，接受容器名称和ID作为参数；</p>
-<p>-f [exited=<int>] 列出满足exited=<int> 条件的容器；</int></int></p>
-<p>-l 仅列出最新创建的一个容器；</p>
-<p>–no-trunc 显示完整的容器ID；</p>
-<p>-n=4 列出最近创建的4个容器；</p>
-<p>-q 仅列出容器ID；</p>
-<p>-s 显示容器大小。</p>
-</blockquote>
-<ol>
-<li>docker rmi</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ocker rmi [options &quot;o&quot;&gt;] &lt;image&gt;  &quot;o&quot;&gt;[image...]</div><div class="line">docker rmi nginx:latest postgres:latest python:latest</div></pre></td></tr></table></figure>
-<blockquote>
-<p>从本地移除一个或多个指定的镜像。<br>-f 强行移除该镜像，即使其正被使用；<br>–no-prune 不移除该镜像的过程镜像，默认移除。</p>
-</blockquote>
-<ol>
-<li>docker rm</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">docker rm [options &quot;o&quot;&gt;] &lt;container&gt;  &quot;o&quot;&gt;[container...]</div><div class="line">docker rm nginx-01 nginx-02 db-01 db-02</div><div class="line">sudo docker rm -l /webapp/redis</div></pre></td></tr></table></figure>
-<blockquote>
-<p>从本地删除一个容器<br>-f 强行移除该容器，即使其正在运行；<br>-l 移除容器间的网络连接，而非容器本身；<br>-v 移除与容器关联的空间。</p>
-</blockquote>
-<ol>
-<li>docker history</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker history  &quot;o&quot;&gt;[options] &lt;image&gt;</div></pre></td></tr></table></figure>
-<blockquote>
-<p>查看指定镜像的创建历史。<br>–no-trunc 显示完整的提交记录；<br>-q 仅列出提交记录ID。</p>
-</blockquote>
-<ol>
-<li>docker start|stop|restart 启动、停止和重启一个或多个指定容器。</li>
+</li>
+<li><p>docker rmi 从本地移除一个或多个指定的镜像。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">ocker rmi [options &quot;o&quot;&gt;] &lt;image&gt;  &quot;o&quot;&gt;[image...]</div><div class="line">docker rmi nginx:latest postgres:latest python:latest</div><div class="line">-f 强行移除该镜像，即使其正被使用；</div><div class="line">--no-prune 不移除该镜像的过程镜像，默认移除。</div></pre></td></tr></table></figure>
+</li>
+<li><p>docker rm 从本地删除一个容器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">docker rm [options &quot;o&quot;&gt;] &lt;container&gt;  &quot;o&quot;&gt;[container...]</div><div class="line">docker rm nginx-01 nginx-02 db-01 db-02</div><div class="line">sudo docker rm -l /webapp/redis</div><div class="line">-f 强行移除该容器，即使其正在运行；</div><div class="line">-l 移除容器间的网络连接，而非容器本身；</div><div class="line">-v 移除与容器关联的空间。</div></pre></td></tr></table></figure>
+</li>
+<li><p>docker history 查看指定镜像的创建历史。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">docker history  &quot;o&quot;&gt;[options] &lt;image&gt;</div><div class="line">--no-trunc 显示完整的提交记录；</div><div class="line">-q 仅列出提交记录ID。</div></pre></td></tr></table></figure>
+</li>
+<li><p>docker start|stop|restart 启动、停止和重启一个或多个指定容器。</p>
+</li>
 <li>docker kill 杀死一个或多个指定容器进程。</li>
 <li>docker events 从服务器拉取个人动态，可选择时间区间。</li>
-<li>docker save</li>
-</ol>
+<li><p>docker save 将指定镜像保存成 tar 归档文件， docker load 的逆操作。保存后再加载（saved-loaded）的镜像不会丢失提交历史和层，可以回滚。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">docker save -i &quot;debian.tar&quot;</div><div class="line">docker save &gt; &quot;debian.tar&quot;</div></pre></td></tr></table></figure>
-<blockquote>
-<p>将指定镜像保存成 tar 归档文件， docker load 的逆操作。保存后再加载（saved-loaded）的镜像不会丢失提交历史和层，可以回滚。</p>
-</blockquote>
-<ol>
-<li>docker load</li>
-</ol>
+</li>
+<li><p>docker load 从 tar 镜像归档中载入镜像， docker save 的逆操作。保存后再加载（saved-loaded）的镜像不会丢失提交历史和层，可以回滚。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">docker load [options]</div><div class="line">docker load &lt; debian.tar</div><div class="line">docker load -i &quot;debian.tar&quot;</div></pre></td></tr></table></figure>
-<blockquote>
-<p>从 tar 镜像归档中载入镜像， docker save 的逆操作。保存后再加载（saved-loaded）的镜像不会丢失提交历史和层，可以回滚。</p>
-</blockquote>
-<ol>
-<li>docker export</li>
-</ol>
+</li>
+<li><p>docker export 将指定的容器保存成 tar 归档文件， docker import 的逆操作。导出后导入（exported-imported)）的容器会丢失所有的提交历史，无法回滚。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">docker export &lt;container&gt;</div><div class="line">docker export nginx-01 &gt; export.tar</div></pre></td></tr></table></figure>
-<blockquote>
-<p>将指定的容器保存成 tar 归档文件， docker import 的逆操作。导出后导入（exported-imported)）的容器会丢失所有的提交历史，无法回滚。</p>
-</blockquote>
-<ol>
-<li>docker import</li>
-</ol>
+</li>
+<li><p>docker import 从归档文件（支持远程文件）创建一个镜像， export 的逆操作，可为导入镜像打上标签。导出后导入（exported-imported)）的容器会丢失所有的提交历史，无法回滚。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">docker import url|-  &quot;o&quot;&gt;[repository[:tag &quot;o&quot;&gt;]]</div><div class="line">cat export.tar  &quot;p&quot;&gt;| docker import - imported-nginx:latest</div><div class="line">docker import http://example.com/export.tar</div></pre></td></tr></table></figure>
-<blockquote>
-<p>从归档文件（支持远程文件）创建一个镜像， export 的逆操作，可为导入镜像打上标签。导出后导入（exported-imported)）的容器会丢失所有的提交历史，无法回滚。</p>
-</blockquote>
-<ol>
-<li>docker top</li>
-</ol>
+</li>
+<li><p>docker top 查看一个正在运行容器进程，支持 ps 命令参数。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker top &lt;running_container&gt;  &quot;o&quot;&gt;[ps options]</div></pre></td></tr></table></figure>
-<blockquote>
-<p>查看一个正在运行容器进程，支持 ps 命令参数。</p>
-</blockquote>
-<ol>
-<li>docker inspect</li>
-</ol>
+</li>
+<li><p>docker inspect 检查镜像或者容器的参数，默认返回 JSON 格式。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">docker instpect nginx:latest</div><div class="line">docker inspect nginx-container</div></pre></td></tr></table></figure>
-<blockquote>
-<p>检查镜像或者容器的参数，默认返回 JSON 格式。</p>
-</blockquote>
-<ol>
-<li>docker pause 暂停某一容器的所有进程。</li>
+</li>
+<li><p>docker pause 暂停某一容器的所有进程。</p>
+</li>
 <li>docker unpause 恢复某一容器的所有进程。</li>
-<li>docker tag</li>
-</ol>
+<li><p>docker tag 标记本地镜像，将其归入某一仓库。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker tag [options &quot;o&quot;&gt;] &lt;image&gt;[:tag &quot;o&quot;&gt;] [repository/ &quot;o&quot;&gt;][username/]name &quot;o&quot;&gt;[:tag]</div></pre></td></tr></table></figure>
-<blockquote>
-<p>标记本地镜像，将其归入某一仓库。</p>
-</blockquote>
-<ol>
-<li>docker push</li>
-</ol>
+</li>
+<li><p>docker push 将镜像推送至远程仓库，默认为 Docker Hub 。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">docker push name[:tag &quot;o&quot;&gt;]</div><div class="line">docker push laozhu/nginx:latest</div></pre></td></tr></table></figure>
-<blockquote>
-<p>将镜像推送至远程仓库，默认为 Docker Hub 。</p>
-</blockquote>
-<ol>
-<li>docker logs</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">docker logs [options &quot;o&quot;&gt;] &lt;container&gt;</div><div class="line">docker logs -f -t --tail= &quot;s2&quot;&gt;&quot;10&quot; insane_babbage</div></pre></td></tr></table></figure>
-<blockquote>
-<p>获取容器运行时的输出日志。<br>-f 跟踪容器日志的最近更新；<br>-t 显示容器日志的时间戳；<br>–tail=”10” 仅列出最新10条容器日志。</p>
-</blockquote>
-<ol>
-<li>docker run</li>
-</ol>
+</li>
+<li><p>docker logs 获取容器运行时的输出日志。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">docker logs [options &quot;o&quot;&gt;] &lt;container&gt;</div><div class="line">docker logs -f -t --tail= &quot;s2&quot;&gt;&quot;10&quot; insane_babbage</div><div class="line">-f 跟踪容器日志的最近更新；</div><div class="line">-t 显示容器日志的时间戳；</div><div class="line">--tail=&quot;10&quot; 仅列出最新10条容器日志。</div></pre></td></tr></table></figure>
+</li>
+<li><p>docker run 启动一个容器，在其中运行指定命令。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker run [options &quot;o&quot;&gt;] &lt;image&gt; [ &quot;nb&quot;&gt;command]  &quot;o&quot;&gt;[arg...]</div></pre></td></tr></table></figure>
 <blockquote>
-<p>启动一个容器，在其中运行指定命令。<br>-a stdin 指定标准输入输出内容类型，可选 STDIN/STDOUT / STDERR 三项；<br>-d 后台运行容器，并返回容器ID；<br>-i 以交互模式运行容器，通常与 -t 同时使用；<br>-t 为容器重新分配一个伪输入终端，通常与 -i 同时使用；<br>–name=”nginx-lb” 为容器指定一个名称；<br>–dns 8.8.8.8 指定容器使用的DNS服务器，默认和宿主一致；<br>–dns-search example.com 指定容器DNS搜索域名，默认和宿主一致；<br>-h “mars” 指定容器的hostname；<br>-e username=”ritchie” 设置环境变量；<br>–env-file=[] 从指定文件读入环境变量；<br>–cpuset=”0-2” or –cpuset=”0,1,2” 绑定容器到指定CPU运行；<br>–net=”bridge” 指定容器的网络连接类型，支持 bridge /host / none container:<name|id> 四种类型；<br>–link=[] 待完成<br>–expose=[] 待完成</name|id></p>
+<p>-a stdin 指定标准输入输出内容类型，可选 STDIN/STDOUT / STDERR 三项；<br>-d 后台运行容器，并返回容器ID；<br>-i 以交互模式运行容器，通常与 -t 同时使用；<br>-t 为容器重新分配一个伪输入终端，通常与 -i 同时使用；<br>–name=”nginx-lb” 为容器指定一个名称；<br>–dns 8.8.8.8 指定容器使用的DNS服务器，默认和宿主一致；<br>–dns-search example.com 指定容器DNS搜索域名，默认和宿主一致；<br>-h “mars” 指定容器的hostname；<br>-e username=”ritchie” 设置环境变量；<br>–env-file=[] 从指定文件读入环境变量；<br>–cpuset=”0-2” or –cpuset=”0,1,2” 绑定容器到指定CPU运行；<br>–net=”bridge” 指定容器的网络连接类型，支持 bridge /host / none container:<name|id> 四种类型；<br>–link=[] 待完成<br>–expose=[] 待完成</name|id></p>
 </blockquote>
+</li>
+</ol>
 
                     
                     <!-- Tags Bottom -->
@@ -344,7 +273,7 @@
     <h3>Recent Posts</h3>
     
         <p>
-            <a href="/2017/06/17/DockerCommand/">Docker 命令详解</a>
+            <a href="/2017/06/17/docker-command/">Docker 命令详解</a>
         </p>
     
         <p>
